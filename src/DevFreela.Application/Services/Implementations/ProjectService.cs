@@ -44,9 +44,11 @@ namespace DevFreela.Application.Services.Implementations
             return projects.Select(p => new ProjectViewRecord(p.Id, p.Title, p.CreatedAt)).ToList();
         }
 
-        public ProjectDetailsViewRecord GetById(int id)
+        public ProjectDetailsViewRecord? GetById(int id)
         {
             var project = new Project("teste", "teste", 1, 1, 600);
+
+            if (project is null) return null;
 
             return new ProjectDetailsViewRecord(
                 project.Id, 
