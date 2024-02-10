@@ -1,5 +1,7 @@
 ﻿using DevFreela.Application.Services.Interfaces;
 using DevFreela.Core.Entities;
+using DevFreela.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 using static DevFreela.Application.InputDTO.Inputs;
 using static DevFreela.Application.ViewDTO.Views;
 
@@ -7,17 +9,27 @@ namespace DevFreela.Application.Services.Implementations
 {
     public class UserService : IUserService
     {
+        private readonly DevFreelaDbContext _dbContext;
+
+        public UserService(DevFreelaDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
         public int Create(CreateUserInputRecord input)
         {
             var user = new User(input.FullName, input.Email, input.BirthDate);
+
+            _dbContext.Add(user);
+
+            _dbContext.SaveChanges();
 
             return user.Id; 
         }
 
         public UserViewRecord? GetUser(int id)
         {
-            var data = new DateTime(1992, 10, 20);
-            var user = new User("Teste", "teste", data);
+            var user = _dbContext.Users.AsNoTracking().SingleOrDefault(u => u.Id == id);
 
             if (user is null) return null;
 
