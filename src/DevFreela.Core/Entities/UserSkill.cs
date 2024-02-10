@@ -2,10 +2,10 @@
 {
     public class UserSkill : BaseEntity
     {
-        public UserSkill(int userId, int skillId)
+        public UserSkill(int idUser, int idSkill)
         {
-            IdUser = userId;
-            IdSkill = skillId;
+            IdUser = idUser;
+            IdSkill = idSkill;
         }
 
         public int IdUser { get; private set; }

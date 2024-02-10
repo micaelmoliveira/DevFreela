@@ -2,11 +2,11 @@
 {
     public class ProjectComment : BaseEntity 
     {
-        public ProjectComment(string content, int projectId, int userId)
+        public ProjectComment(string content, int idProject, int idUser)
         {
             Content = content;
-            IdProject = projectId;
-            IdUser = userId;
+            IdProject = idProject;
+            IdUser = idUser;
             CreatedAt = DateTime.UtcNow;
         }
 
