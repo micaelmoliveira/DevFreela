@@ -5,16 +5,16 @@
         public ProjectComment(string content, int projectId, int userId)
         {
             Content = content;
-            ProjectId = projectId;
-            UserId = userId;
+            IdProject = projectId;
+            IdUser = userId;
             CreatedAt = DateTime.UtcNow;
         }
 
         public string Content { get; private set; }
         public Project Project { get; set; }
-        public int ProjectId { get; private set; }
+        public int IdProject { get; private set; }
         public User User { get; set; }
-        public int UserId { get; private set; }
+        public int IdUser { get; private set; }
         public DateTime CreatedAt { get; private set; }
     }
 }

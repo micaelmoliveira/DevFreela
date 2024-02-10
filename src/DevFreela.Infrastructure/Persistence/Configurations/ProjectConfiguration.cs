@@ -14,13 +14,13 @@ namespace DevFreela.Infrastructure.Persistence.Configurations
             builder
                 .HasOne(p => p.Freelancer)
                 .WithMany(f => f.FreelanceProjects)
-                .HasForeignKey(p => p.FreelancerId)
+                .HasForeignKey(p => p.IdFreelancer)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder
                 .HasOne(p => p.Client)
                 .WithMany(f => f.OwnedProjects)
-                .HasForeignKey(p => p.ClientId)
+                .HasForeignKey(p => p.IdCliente)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

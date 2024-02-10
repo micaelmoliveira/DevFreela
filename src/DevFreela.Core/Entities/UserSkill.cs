@@ -4,12 +4,12 @@
     {
         public UserSkill(int userId, int skillId)
         {
-            UserId = userId;
-            SkillId = skillId;
+            IdUser = userId;
+            IdSkill = skillId;
         }
 
-        public int UserId { get; private set; }
-        public int SkillId { get; private set; }
+        public int IdUser { get; private set; }
+        public int IdSkill { get; private set; }
         public Skill Skill { get; set; }
     }
 }
