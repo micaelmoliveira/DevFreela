@@ -9,14 +9,14 @@ namespace DevFreela.Application.Services.Implementations
     {
         public int Create(NewProjectInputRecord input)
         {
-            var project = new Project(input.Title, input.Description, input.ClientId, input.FreelancerId, input.TotalCost);
+            var project = new Project(input.Title, input.Description, input.IdClient, input.IdFreelancer, input.TotalCost);
 
             return project.Id;
         }
 
         public void CreateComment(CreateCommentInputRecord input)
         {
-            var comment = new ProjectComment(input.Content, input.ProjectId, input.UserId);
+            var comment = new ProjectComment(input.Content, input.ProjectId, input.IdUser);
         }
 
         public void Delete(int id)
