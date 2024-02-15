@@ -2,22 +2,22 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace DevFreela.Application.Commands.Project.UpdateProject
+namespace DevFreela.Application.Commands.ProjectCommand.FinishProject
 {
-    public class UpdateProjectCommandHandler : IRequestHandler<UpdateProjectCommand, Unit>
+    public class FinishProjectCommandHandler : IRequestHandler<FinishProjectCommand, Unit>
     {
         private readonly DevFreelaDbContext _dbContext;
 
-        public UpdateProjectCommandHandler(DevFreelaDbContext dbContext)
+        public FinishProjectCommandHandler(DevFreelaDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<Unit> Handle(UpdateProjectCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(FinishProjectCommand request, CancellationToken cancellationToken)
         {
             var project = await _dbContext.Projects.AsNoTracking().SingleOrDefaultAsync(p => p.Id == request.Id);
 
-            project.Update(request.Title, request.Description, request.TotalCost);
+            project.Finish();
 
             await _dbContext.SaveChangesAsync();
 

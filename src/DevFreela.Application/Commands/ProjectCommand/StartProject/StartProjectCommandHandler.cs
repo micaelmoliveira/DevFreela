@@ -2,22 +2,22 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace DevFreela.Application.Commands.Project.DeleteProject
+namespace DevFreela.Application.Commands.ProjectCommand.StartProject
 {
-    public class DeleteProjectCommandHandler : IRequestHandler<DeleteProjectCommand, Unit>
+    public class StartProjectCommandHandler : IRequestHandler<StartProjectCommand, Unit>
     {
         private readonly DevFreelaDbContext _dbContext;
 
-        public DeleteProjectCommandHandler(DevFreelaDbContext dbContext)
+        public StartProjectCommandHandler(DevFreelaDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<Unit> Handle(DeleteProjectCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(StartProjectCommand request, CancellationToken cancellationToken)
         {
             var project = await _dbContext.Projects.AsNoTracking().SingleOrDefaultAsync(p => p.Id == request.Id);
 
-            project.Cancel();
+            project.Start();
 
             await _dbContext.SaveChangesAsync();
 

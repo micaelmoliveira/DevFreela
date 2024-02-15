@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace DevFreela.Application.Commands.Project.DeleteProject
+namespace DevFreela.Application.Commands.ProjectCommand.DeleteProject
 {
     public class DeleteProjectCommand : IRequest<Unit>
     {

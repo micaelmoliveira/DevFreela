@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace DevFreela.Application.Commands.Project.UpdateProject
+namespace DevFreela.Application.Commands.ProjectCommand.UpdateProject
 {
     public class UpdateProjectCommand : IRequest<Unit>
     {
