@@ -1,4 +1,4 @@
-using DevFreela.Application.Commands.CreateProject;
+using DevFreela.Application.Commands.Project.CreateProject;
 using DevFreela.Application.Services.Implementations;
 using DevFreela.Application.Services.Interfaces;
 using DevFreela.Infrastructure.Persistence;
@@ -14,7 +14,7 @@ builder.Services.AddDbContext<DevFreelaDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("WebApiDatabase")));
 
 builder.Services.AddScoped<IProjectService, ProjectService>();
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(CreateProjectCommand).Assembly));
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining(typeof(CreateProjectCommand)));
 
 var app = builder.Build();
 
