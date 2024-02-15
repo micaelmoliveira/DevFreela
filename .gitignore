@@ -365,4 +365,4 @@ FodyWeavers.xsd
 #SqLite database
 LocalDatabase.db
 LocalDatabase.db-shm
-LocalDatabase.db-shm
+LocalDatabase.db-wal
