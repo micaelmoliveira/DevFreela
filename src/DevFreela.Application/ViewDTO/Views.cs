@@ -15,6 +15,7 @@
 
         public record SkillViewRecord(int Id, string Description);
         public record UserViewRecord(string FullName, string Email);
+        public record LoginUserRecord(string email, string token);
     }
 }
 
